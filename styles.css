@@ -11,18 +11,31 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+  background-image: radial-gradient( circle farthest-corner at 10% 20%,  rgba(97,186,255,1) 0%, rgba(166,239,253,1) 90.1% );
 }
 
 #calculator {
   width: 350px;
   display: flex;
   flex-direction: column;
+  outline: 3px solid black;
+  outline-offset: 3px;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 }
 
 #calculator > label {
+  width: 350px;
+  background-color: cadetblue;
   display: flex;
-  align-self: end;
-  padding-right: 0.5rem;
+  justify-content: right;
+  padding: 0.5rem;
+  word-wrap: break-word;
+  word-break: break-all;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
 }
 
 #eingabe {
@@ -30,10 +43,12 @@ html, body {
   background-color: cadetblue;
   text-align: right;
   padding: 0.5rem;
-  border-bottom: 2px solid white;
+  margin-bottom: 2px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 
-#buttons {
+#buttons-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(5, 1fr);
@@ -44,8 +59,21 @@ html, body {
   display: flex;
   align-content: center;
   justify-content: center;
-  padding: 0.7rem;
+  padding: 1rem;
   background-color: rgb(150, 150, 150);
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.span2 {
+  grid-column: span 2;
+}
+
+.btn-bl {
+  border-bottom-left-radius: 0.5rem;
+}
+
+.btn-br {
+  border-bottom-right-radius: 0.5rem;
 }
