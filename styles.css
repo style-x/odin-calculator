@@ -76,4 +76,19 @@ html, body {
 
 .btn-br {
   border-bottom-right-radius: 0.5rem;
+  background-color: rgb(0, 100, 200);
+}
+
+.btn-op {
+  background-color: rgb(250, 150, 70);
+}
+
+.btn-acdel {
+  background-color: rgb(55, 55, 55);
+  color: white;
+}
+
+footer {
+  position: fixed;
+  bottom: 1rem;
 }

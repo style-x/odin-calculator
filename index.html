@@ -6,34 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="scripts.js" defer></script>
 </head>
 <body>
 
   <div id="calculator">
-    <label for="eingabe" data-previous>Label für Eingabe</label>
-    <div id="eingabe" data-current>Testeingabe</div>
+    <label for="eingabe" data-previous>&nbsp;</label>
+    <div id="eingabe" data-current>0</div>
     <div id="buttons-grid">
-      <div class="button span2" data-ac>AC</div>
-      <div class="button" data-del>DEL</div>
-      <div class="button" data-op>:</div>
+      <div class="button span2 btn-acdel" data-ac>AC</div>
+      <div class="button btn-acdel" data-del>DEL</div>
+      <div class="button btn-op" data-op>:</div>
       <div class="button" data-nr>7</div>
       <div class="button" data-nr>8</div>
       <div class="button" data-nr>9</div>
-      <div class="button" data-op>*</div>
+      <div class="button btn-op" data-op>*</div>
       <div class="button" data-nr>4</div>
       <div class="button" data-nr>5</div>
       <div class="button" data-nr>6</div>
-      <div class="button" data-op>-</div>
+      <div class="button btn-op" data-op>-</div>
       <div class="button" data-nr>1</div>
       <div class="button" data-nr>2</div>
       <div class="button" data-nr>3</div>
-      <div class="button" data-op>+</div>
+      <div class="button btn-op" data-op>+</div>
       <div class="button btn-bl" data-nr>0</div>
       <div class="button" data-nr>.</div>
       <div class="button btn-br span2" data-equals>=</div>
     </div>
   </div>
 
-  <script src="scripts.js" defer></script>
+  <footer>&copy; 2022 Sebastian</footer>
 </body>
 </html>

@@ -7,6 +7,22 @@ const txtPrevious = document.querySelectorAll("[data-previous]");
 const txtCurrent = document.querySelectorAll("[data-current]");
 
 
+btnNr.forEach(btn => {
+  btn.addEventListener("click", () => {
+    current = txtCurrent.innerText;
+    neu = btn.innerText;
+    txtCurrent.innerText = current + neu;
+    console.log(current)
+  })
+})
+
+btnOp.forEach(btn => {
+  btn.addEventListener("click", () => {
+    console.log("Operand:" + btn.innerText)
+  })
+})
+
+/*
 
 function add() {
   console.log("add");
@@ -36,8 +52,11 @@ function clear() {
   console.log("clear");
 };
 
+
 function append(nr) {
-  if (nr === ".") {
-    
+  if (nr === "." && this.currentOperand.includes(".")) return
+  this.currentOperand = this.currentOperand.toString() + nr.toString()
   }
 };
+
+*/
