@@ -26,7 +26,7 @@ html, body {
   border-bottom-right-radius: 0.5rem;
 }
 
-#calculator > label {
+#eingabe2 {
   width: 350px;
   background-color: cadetblue;
   display: flex;
@@ -36,9 +36,10 @@ html, body {
   word-break: break-all;
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
+  font-size: 1.2rem;
 }
 
-#eingabe {
+#eingabe1 {
   width: 350px;
   background-color: cadetblue;
   text-align: right;
@@ -46,6 +47,7 @@ html, body {
   margin-bottom: 2px;
   word-wrap: break-word;
   word-break: break-all;
+  font-size: 2rem;
 }
 
 #buttons-grid {
@@ -83,7 +85,7 @@ html, body {
   background-color: rgb(250, 150, 70);
 }
 
-.btn-acdel {
+#btn-ac, #btn-del {
   background-color: rgb(55, 55, 55);
   color: white;
 }

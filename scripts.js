@@ -2,61 +2,66 @@ const btnNr = document.querySelectorAll("[data-nr]");
 const btnOp = document.querySelectorAll("[data-op]");
 const btnEqual = document.querySelectorAll("[data-equals]");
 const btnDel = document.querySelectorAll("[data-del]");
-const btnAc = document.querySelectorAll("[data-ac]");
-const txtPrevious = document.querySelectorAll("[data-previous]");
-const txtCurrent = document.querySelectorAll("[data-current]");
+const btnAc = document.getElementById("btn-ac");
+const txtPrevious = document.getElementById("eingabe2");
+const txtCurrent = document.getElementById("eingabe1");
 
+let current = "";
+let neu;
+let operand = "";
+let dotAllowed = true;
 
+// Zahleneingabe - Limitiert auf 16 Zahlen
 btnNr.forEach(btn => {
   btn.addEventListener("click", () => {
-    current = txtCurrent.innerText;
+    if (current.length < 16 || current == "") {
+      current = txtCurrent.innerText;
     neu = btn.innerText;
-    txtCurrent.innerText = current + neu;
-    console.log(current)
+    update();
+    } else {
+      console.log("Error: Zahl zu lang (Limit: 16)");
+    }
   })
-})
+});
 
+// Die Operatoren [:] [*] [-] [+]
 btnOp.forEach(btn => {
   btn.addEventListener("click", () => {
-    console.log("Operand:" + btn.innerText)
+    if (operand == "") {
+      operand = btn.innerText;
+      console.log(`Operand ${operand} gesetzt`);
+    } else {
+      switch (operand) {
+        case ':':
+          console.log(" : Rechnen");
+          break;
+        case "*":
+          console.log(" * Rechnen");
+          break;
+        case "-":
+          console.log(" - Rechnen");
+          break;
+        case "+":
+          console.log(" + Rechnen");
+          break;
+        default:
+          console.log("Error: Operand nicht erkannt");
+      }
+    }
+    
   })
-})
+});
 
-/*
+// Der Button [DEL]
+btnAc.addEventListener("click", () => {
+  current = "";
+  neu = "";
+  operand = "";
+  txtCurrent.innerText = "";
+  txtPrevious.innerText = "";
+});
 
-function add() {
-  console.log("add");
+function update() {
+  txtCurrent.innerText = current + neu;
 };
 
-function subtract() {
-  console.log("subtract");
-};
-
-function multiply() {
-  console.log("multiply");
-};
-
-function divide() {
-  console.log("divide");
-};
-
-function operate() {
-  console.log("operate");
-};
-
-function back() {
-  console.log("delete");
-};
-
-function clear() {
-  console.log("clear");
-};
-
-
-function append(nr) {
-  if (nr === "." && this.currentOperand.includes(".")) return
-  this.currentOperand = this.currentOperand.toString() + nr.toString()
-  }
-};
-
-*/
