@@ -27,6 +27,7 @@ html, body {
 }
 
 #eingabe2 {
+  height: 2rem;
   width: 350px;
   background-color: cadetblue;
   display: flex;
@@ -36,10 +37,11 @@ html, body {
   word-break: break-all;
   border-top-right-radius: 0.5rem;
   border-top-left-radius: 0.5rem;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
 }
 
 #eingabe1 {
+  height: 3.5rem;
   width: 350px;
   background-color: cadetblue;
   text-align: right;

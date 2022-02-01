@@ -1,13 +1,13 @@
 const btnNr = document.querySelectorAll("[data-nr]");
 const btnOp = document.querySelectorAll("[data-op]");
 const btnEqual = document.querySelectorAll("[data-equals]");
-const btnDel = document.querySelectorAll("[data-del]");
+const btnDel = document.getElementById("btn-del");
 const btnAc = document.getElementById("btn-ac");
 const txtPrevious = document.getElementById("eingabe2");
 const txtCurrent = document.getElementById("eingabe1");
 
 let current = "";
-let neu;
+let neu = "";
 let operand = "";
 let dotAllowed = true;
 
@@ -16,8 +16,8 @@ btnNr.forEach(btn => {
   btn.addEventListener("click", () => {
     if (current.length < 16 || current == "") {
       current = txtCurrent.innerText;
-    neu = btn.innerText;
-    update();
+      neu = btn.innerText;
+      txtCurrent.innerText = current + neu;
     } else {
       console.log("Error: Zahl zu lang (Limit: 16)");
     }
@@ -29,7 +29,10 @@ btnOp.forEach(btn => {
   btn.addEventListener("click", () => {
     if (operand == "") {
       operand = btn.innerText;
-      console.log(`Operand ${operand} gesetzt`);
+      current = txtCurrent.innerText;
+      txtPrevious.innerText = current;
+      current = "";
+      txtCurrent.innerText = current;
     } else {
       switch (operand) {
         case ':':
@@ -52,7 +55,7 @@ btnOp.forEach(btn => {
   })
 });
 
-// Der Button [DEL]
+// Der Button [AC]
 btnAc.addEventListener("click", () => {
   current = "";
   neu = "";
@@ -61,7 +64,14 @@ btnAc.addEventListener("click", () => {
   txtPrevious.innerText = "";
 });
 
-function update() {
-  txtCurrent.innerText = current + neu;
-};
-
+// Der Button [DEL]
+btnDel.addEventListener("click", () => {
+  if (current.length > 0) {
+    current = txtCurrent.innerText;
+    current = current.slice(0, -1);
+    txtCurrent.innerText = current;
+  } else {
+    console.log("Nichts zu löschen da..");
+  }
+  
+});
