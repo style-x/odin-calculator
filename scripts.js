@@ -1,19 +1,25 @@
 const btnNr = document.querySelectorAll("[data-nr]");
 const btnOp = document.querySelectorAll("[data-op]");
-const btnEqual = document.querySelectorAll("[data-equals]");
+const equal = document.getElementById("equals");
 const btnDel = document.getElementById("btn-del");
 const btnAc = document.getElementById("btn-ac");
 const txtPrevious = document.getElementById("eingabe2");
 const txtCurrent = document.getElementById("eingabe1");
+const op = document.getElementById("operator");
 
 let current = "";
 let neu = "";
 let operand = "";
 let dotAllowed = true;
+let sum;
 
 // Zahleneingabe - Limitiert auf 16 Zahlen
 btnNr.forEach(btn => {
   btn.addEventListener("click", () => {
+    if (btn.innerText == ".") {
+      console.log("Funktion des Punktes ist in Bearbeitung...");
+      return;
+    }
     if (current.length < 16 || current == "") {
       current = txtCurrent.innerText;
       neu = btn.innerText;
@@ -33,19 +39,28 @@ btnOp.forEach(btn => {
       txtPrevious.innerText = current;
       current = "";
       txtCurrent.innerText = current;
+      op.innerText = operand;
     } else {
-      switch (operand) {
+      switch (btn.innerText) {
         case ':':
-          console.log(" : Rechnen");
+          rechnen();
+          operand = ":";
+          rechnen2();
           break;
         case "*":
-          console.log(" * Rechnen");
+          rechnen();
+          operand = "*";
+          rechnen2();
           break;
         case "-":
-          console.log(" - Rechnen");
+          rechnen();
+          operand = "-";
+          rechnen2();
           break;
         case "+":
-          console.log(" + Rechnen");
+          rechnen();
+          operand = "+";
+          rechnen2();
           break;
         default:
           console.log("Error: Operand nicht erkannt");
@@ -62,6 +77,7 @@ btnAc.addEventListener("click", () => {
   operand = "";
   txtCurrent.innerText = "";
   txtPrevious.innerText = "";
+  op.innerText = "";
 });
 
 // Der Button [DEL]
@@ -73,5 +89,37 @@ btnDel.addEventListener("click", () => {
   } else {
     console.log("Nichts zu löschen da..");
   }
-  
 });
+
+// Der Button [=] equal
+equal.addEventListener("click", () => {
+  rechnen();
+  if (sum) {
+    current = "";
+    neu = "";
+    operand = "";
+    txtCurrent.innerText = sum;
+    txtPrevious.innerText = "";
+    op.innerText = "";
+  }
+});
+
+function rechnen() {
+  let eins = txtPrevious.innerText;
+  let zwei = txtCurrent.innerText;
+  sum = (operand == ":") ? (eins / zwei) :
+        (operand == "*") ? (eins * zwei) :
+        (operand == "-") ? (eins - zwei) :
+        (operand == "+") ? (Number(eins) + Number(zwei)) :
+        console.log("error bei rechnen..=!");
+}
+
+function rechnen2() {
+  if (sum) {
+    current = "";
+    neu = "";
+    txtCurrent.innerText = "";
+    txtPrevious.innerText = sum;
+    op.innerText = operand;
+  }
+}
