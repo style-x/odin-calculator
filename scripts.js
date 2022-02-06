@@ -17,8 +17,11 @@ let sum;
 btnNr.forEach(btn => {
   btn.addEventListener("click", () => {
     if (btn.innerText == ".") {
-      console.log("Funktion des Punktes ist in Bearbeitung...");
-      return;
+      if (dotAllowed == false) {
+        return;
+      } else {
+        dotAllowed = false;
+      }
     }
     if (current.length < 16 || current == "") {
       current = txtCurrent.innerText;
@@ -40,6 +43,7 @@ btnOp.forEach(btn => {
       current = "";
       txtCurrent.innerText = current;
       op.innerText = operand;
+      dotAllowed = true;
     } else {
       switch (btn.innerText) {
         case ':':
@@ -78,12 +82,20 @@ btnAc.addEventListener("click", () => {
   txtCurrent.innerText = "";
   txtPrevious.innerText = "";
   op.innerText = "";
+  dotAllowed = true;
 });
 
 // Der Button [DEL]
 btnDel.addEventListener("click", () => {
+  current = txtCurrent.innerText;
   if (current.length > 0) {
     current = txtCurrent.innerText;
+    if (current.slice(-1) == ".") {
+      current = current.slice(0, -1);
+      txtCurrent.innerText = current;
+      dotAllowed = true;
+      return;
+    }
     current = current.slice(0, -1);
     txtCurrent.innerText = current;
   } else {
